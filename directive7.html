@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+body {font-size:30px;}
+/*[v-cloak] { display: none;}*/
+[v-cloak] {opacity:0;}
+.transition {transition: opacity 2s;}
+</style>
+</head>
+<body id="body">
+<div id="main">
+	<div id="test" v-el="test">测试</div>
+	<div id="test1" v-pre>测试1</div>
+	<div id="test2" v-pre>测试2</div>
+	<div id="test3" v-pre>测试3</div>
+	<div id="test4">{{parentMsg}}</div>
+	<div id="test5" class="transition" v-cloak>{{parentMsg}}</div>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+//alert(0);
+var vm = new Vue({
+	el:'#main',
+	data: {
+		parentMsg: 'Hello'
+	}
+});
+console.log(vm.$$.test);
+
+
+</script>
+</body>
+</html>

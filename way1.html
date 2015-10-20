@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+body {font-size:30px;}
+
+</style>
+</head>
+<body>
+<div id="main">
+	<input v-model="a" type="text" />
+	<p>{{a}}</p>
+	<input type="button" v-on="click:stopFn" value="停止监听" />
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+//alert(0);
+var vm = new Vue({
+	el:'#main',
+	data: {
+		a:1,
+		b:3,
+		msg: 'hello'
+	},
+	methods:{
+		stopFn: function (){
+			unwatch();
+		}
+	}
+});
+var unwatch = vm.$watch('a', function (newVal, oldVal) {
+  console.log(newVal);
+  console.log(oldVal);
+})
+// 停止观察
+
+alert('vm.$get→'+vm.$get('1+2'));
+vm.$set( 'b', 99 );
+console.log(vm.b);
+
+</script>
+</body>
+</html>

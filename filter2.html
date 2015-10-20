@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+body {font-size:30px;}
+
+</style>
+</head>
+<body id="body">
+<div id="main">
+	<pre>{{json}} - {{json | json 4}}</pre>
+	<input v-on="keyup:show | key 'enter'" type="button" value="回车">
+	<a href="javascript:;" v-on="click:showAge | debounce">点击</a>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+//alert(0);
+var vm = new Vue({
+	el:'#main',
+	data: {
+		json: {
+			"name": "lee",
+			"age": "18"
+		}
+	},
+	methods:{
+		show: function(){
+			alert(this.json.name);
+		},
+		showAge: function(){
+			console.log(this.json.age);
+		}
+	}
+});
+
+
+</script>
+</body>
+</html>

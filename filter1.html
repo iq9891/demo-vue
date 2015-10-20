@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+body {font-size:30px;}
+
+</style>
+</head>
+<body id="body">
+<div id="main">
+	<div>{{lowercase | lowercase | reverse}}</div>
+	<div>{{uppercase | uppercase}}</div>
+	<div>{{capitalize | capitalize}}</div>
+	<div>{{money | currency '#'}}</div>
+	<br />
+	<template v-repeat="arr in arrs">
+		<div>{{arr}}{{arr | pluralize 'st' 'nd' 'rd' 'th'}} -- {{arr}}{{arr | pluralize 'px'}}</div>
+	</template>
+	
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+//alert(0);
+var vm = new Vue({
+	el:'#main',
+	data: {
+		lowercase: 'LOWERCASE',
+		uppercase: 'uppercase',
+		capitalize: 'capitalize',
+		money: '123456894',
+		arrs: [1,2,3,4,5]
+	}
+});
+
+
+</script>
+</body>
+</html>

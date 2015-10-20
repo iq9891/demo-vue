@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>表格组件</title>
+<style type="text/css">
+.main {border:1px solid #000;}
+.name {background:red;}
+.age {background:yellow;}
+</style>
+</head>
+<body>
+<!-- component template -->
+<script type="text/x-template" id="tem">
+<p class="name">{{name}}</p>
+<p class="age">{{age}}</p>
+</script>
+
+<!-- demo root element -->
+<div id="main" class="main">
+  
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+// bootstrap the demo
+var demo = new Vue({
+  el: '#main',
+  template: '#tem',
+  replace: false,
+  data: {
+    name:'lee',
+	age: 18
+  }
+})
+</script>
+</body>
+</html>

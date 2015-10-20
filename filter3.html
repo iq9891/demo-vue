@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+body {font-size:30px;}
+
+</style>
+</head>
+<body id="body">
+<div id="main">
+	<input v-model="serch">
+	<ul>
+	  <li v-repeat="users | filterBy serch">{{name}}</li>
+	</ul>
+	<input v-on="click: reverse = !reverse" type="button" value="排序一下">
+	<ul>
+		<li v-repeat="users | orderBy field reverse">{{name}}</li>
+	</ul>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+//alert(0);
+var vm = new Vue({
+	el:'#main',
+	data: {
+		field: 'name',
+		reverse: false,
+		users: [
+			{ name: 'Lee', phone: '222' },
+			{ name: 'Lily', phone: '444' },
+			{ name: 'Jack', phone: '111' },
+			{ name: 'Make', phone: '333' }
+		]
+	}
+});
+
+
+</script>
+</body>
+</html>

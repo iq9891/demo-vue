@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue</title>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<div id="main">
+	<p>我的名字是{{name}}</p>
+	<p>我今年{{age}}</p>
+</div>
+<script>
+var oData = {
+    name:'lee',
+	age: 18
+  };
+
+var vm = new Vue({
+  el: '#main',
+  data: oData,
+  computed: {
+    // 只需要 getter 时，直接用一个函数即可
+    aDouble: function () {
+      return this.age * 2
+    },
+    // 同时提供 getter 与 setter
+    aPlus: {
+      get: function () {
+        return this.age + 1;
+      },
+      set: function (v) {
+		console.log('v:'+v);
+        this.age = v - 1;
+      }
+    }
+  }
+});
+console.log(vm.aPlus);
+vm.aPlus = 6;
+console.log(vm.age);
+console.log(vm.aDouble);
+</script>
+</body>
+</html>

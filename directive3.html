@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>表格组件</title>
+<style type="text/css">
+.red {color:#f00;}
+.bold {font-weight:bold;}
+.yellow {background:yellow;}
+.red {background:red;}
+.white {color:white;}
+</style>
+</head>
+<body id="body">
+<div id="main" class="main">
+	<p v-class="white:true,red: true,yellow: false" v-text='name'></p>
+	<p v-class="green: false,yellow: true" v-text='age'></p>
+	<p v-class="red: false,yellow: false" v-text='sex'></p>
+	<div v-attr="class:name" v-style="width:age+'px',height:age+'px';"></div>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+var vm = new Vue({
+	el:'#main',
+	data: {
+		name:'red',
+		age: 18,
+		sex: '女'
+	}
+});
+
+</script>
+</body>
+</html>

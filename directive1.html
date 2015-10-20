@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>表格组件</title>
+<style type="text/css">
+.main {border:1px solid #000;}
+.name {background:red;}
+.age {background:yellow;}
+.sex {background:green;color:#fff;}
+</style>
+</head>
+<body id="body">
+<div id="main" class="main">
+	<p class="name" v-text="name"></p>
+	<p class="age" v-html="age"></p>
+	<p class="sex">{{sex}}</p>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+alert(0);
+var vm = new Vue({
+	el:'#main',
+	data: {
+		name:'lee',
+		age: 18,
+		sex: '女'
+	}
+});
+
+</script>
+</body>
+</html>

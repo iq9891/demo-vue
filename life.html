@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>表格组件</title>
+<style type="text/css">
+.main {border:1px solid #000;}
+.name {background:red;}
+.age {background:yellow;}
+.sex {background:green;color:#fff;}
+</style>
+</head>
+<body id="body">
+<!-- component template -->
+<script type="text/x-template" id="tem">
+<p class="name">{{name}}</p>
+<p class="age">{{age}}</p>
+<p class="sex">{{sex}}</p>
+</script>
+
+<!-- demo root element -->
+<div id="main" class="main">
+  
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+// bootstrap the demo
+var vm = new Vue({
+	el:'#main',
+  template: '#tem',
+  replace: false,
+  created: function(){
+	this.age = 333;
+	console.log('我被创建了');
+  },
+  beforeCompile: function(){
+	this.name = '';
+	console.log('编译开始之前调用');
+  },
+  compiled: function(){
+	this.sex = '男';
+	console.log('在编译完成后调用');
+  },
+  ready: function(){
+	console.log('ready');
+  },
+  attached: function(){
+	console.log('attached');
+  },
+  detached: function(){
+	console.log('detached');
+  },
+  beforeDestroy: function(){
+	console.log('beforeDestroy');
+  },
+  destroyed: function(){
+	console.log('destroyed');
+  },
+  data: {
+    name:'lee',
+	age: 18,
+	sex: '女'
+  }
+});
+
+setTimeout(function(){
+	
+	var vmChild = vm.$addChild({
+	  inherit: true,
+	  data: { b: 2 }
+	});
+	vmChild.age = 123456789;
+	//vm.$mount('#main');
+	//vm.$compile('#main');
+	//vm.$addChild( [options, constructor] )
+	//document.getElementById('body').removeChild(document.getElementById('main'));
+},1000);
+</script>
+</body>
+</html>

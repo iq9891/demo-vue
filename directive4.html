@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>表格组件</title>
+<style type="text/css">
+.red {color:#f00;}
+.bold {font-weight:bold;}
+.yellow {background:yellow;}
+.red {background:red;}
+.white {color:white;}
+</style>
+</head>
+<body id="body">
+<div id="main" class="main">
+	<input v-on="click: btn = !btn,touchend:tapFn" type="button" value="点击" />
+	<p v-on="white: btn,red: btn,yellow: !btn" v-text='name'></p>
+	<p v-class="green: !btn,yellow: btn" v-text='age'></p>
+	<p v-class="red: !btn,white: !btn" v-text='sex'></p>
+	<div v-attr="class:name" v-style="width:age+'px',height:age+'px';"></div>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+var vm = new Vue({
+	el:'#main',
+	data: {
+		name:'red',
+		age: 18,
+		sex: '女',
+		btn: true
+	},
+	methods:{
+		tapFn: function(){
+			alert(this.name);
+		}
+	}
+});
+</script>
+</body>
+</html>

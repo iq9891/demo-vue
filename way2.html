@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+body {font-size:30px;}
+
+</style>
+</head>
+<body>
+<div id="main">
+	<p>{{a}}</p>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+//alert(0);
+var vm = new Vue({
+	el:'#main',
+	data: {
+		a:1,
+		b:3,
+		msg: 'hello'
+	}
+});
+
+console.log(vm.b);
+vm.$add( 'c', 45 );
+vm.$delete( 'b' );
+console.log(vm.b);
+console.log(vm.$eval('msg | uppercase')); // -> 'HELLO'
+console.log(vm.$interpolate('{{msg}} world!'));
+vm.$log();
+vm.$log('msg');
+</script>
+</body>
+</html>

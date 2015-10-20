@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>表格组件</title>
+<style type="text/css">
+.item-0 {background:yellow;}
+.item-1 {background:red;}
+</style>
+</head>
+<body id="body">
+<div id="main">
+<ul>
+	<li v-repeat="items" class="item-{{$index}}" v-text="$index+'-'+parentMsg+'-'+childMsg"></li>
+	<!-- <li v-repeat="item : items">
+		{{$index}}{{parentMsg}} {{item.childMsg}} {{item.childMsg}}
+	</li> -->
+</ul>
+<ul>
+	<li v-repeat="val" v-text="$index"></li>
+</ul>
+<ul>
+	<li v-repeat="primitiveValues">{{$key}} : {{$value}}</li>
+	<li>===</li>
+	<li v-repeat="objectValues">{{$key}} : {{msg}}</li>
+</ul>
+<ul>
+	<template v-repeat="block">
+	<li class="divider">{{$index}}</li>
+	<li>{{msg}}</li>
+	</template>
+</ul>
+</div>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+var vm = new Vue({
+	el:'#main',
+	data: {
+		parentMsg: 'Hello',
+		items: [
+			{ childMsg: 'Foo' },
+			{ childMsg: 'Bar' }
+		],
+		val:3,
+		primitiveValues: {
+			FirstName: 'John',
+			LastName: 'Doe',
+			Age: 30
+		},
+		objectValues: {
+			one: {
+				msg: 'Hello'
+			},
+			two: {
+				msg: 'Bye'
+			}
+		},
+		block: [
+			{msg:'lee'},
+			{msg:'abc'}
+		]
+	}
+});
+</script>
+</body>
+</html>

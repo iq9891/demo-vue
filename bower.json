@@ -1,0 +1,11 @@
+{
+  "name": "demo-vue",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "1.10.1"
+  },
+  "devDependencies": {
+  },
+  "appPath": "demo-vue",
+  "moduleName": "demo-vue"
+}

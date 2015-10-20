@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue</title>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<div id="main">
+	<p>我的名字是{{name}}</p>
+	<p>我今年{{age}}</p>
+	<param-demo size="{{name}}" my-message="{{age}}"></param-demo>
+</div>
+
+<script>
+Vue.component('param-demo', {
+  props: ['size', 'myMessage'], // 数组写法
+  compiled: function () {
+    console.log(this.size);
+    console.log(this.myMessage);
+  }
+});
+var vm = new Vue({
+  el: '#main',
+  data: {
+    name:'lee',
+	age: 18,
+	sex: '男'
+  }
+});
+</script>
+</body>
+</html>
