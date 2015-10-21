@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+.demo {width:100px;height:100px;left:0px;top:0px;background:red;position:absolute;}
+</style>
+</head>
+<body>
+<div id="main">
+	<demo class="demo"></demo>
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+//元素指令不能接受参数或表达式，但是它可以读取元素的特性
+Vue.elementDirective('demo', {
+	bind: function () {
+		var oldX = 0, oldY = 0,
+			$el = $(this.el);//限制范围
+		$el.on({
+			mousedown: function(e){
+			
+				oldX = e.clientX;
+				oldY = e.clientY;
+				$el.data({
+					left:parseInt($el.css('left')),
+					top:parseInt($el.css('top'))
+				});
+				$(document).on({
+					mousemove: function(e){
+						$el.css({
+							left: e.clientX-oldX+$el.data('left'),
+							top: e.clientY-oldY+$el.data('top')
+						});
+					},
+					mouseup: function(){
+						$(document).off();
+					}
+				});
+				e.preventDefault();
+				return false;
+			}
+		});
+	},
+	unbind: function () {
+		//事件清理
+		$(document,this.el).off();
+	}
+});
+
+var demo = new Vue({
+  el: '#main',
+  data: {
+	a:40,
+	b:30
+  }
+});
+
+</script>
+</body>
+</html>

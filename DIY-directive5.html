@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+</head>
+<body>
+<div id="main">
+	<div v-demo="a++"></div>
+	{{a}}
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+Vue.directive('demo', {
+	acceptStatement: true,
+	update: function (fn) {
+		//运行内联语句
+		setTimeout(fn,1000);
+	}
+});
+
+var demo = new Vue({
+  el: '#main',
+  data: {
+    a: 1
+  }
+});
+
+</script>
+</body>
+</html>

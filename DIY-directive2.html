@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+.demo {width:300px;height:300px;left:0px;top:0px;}
+</style>
+</head>
+<body>
+<div id="main">
+	<input type="button" v-on="click: click" value="点击" />
+	<div id="demo" class="demo" v-demo="{bg: bg, color: color}"></div>
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+
+Vue.directive('demo', function (value) { 
+	//这个函数会被作为 update() 函数使用
+	var $el = $(this.el),
+		sHtml = '背景颜色:'+value.bg+'<br />字体颜色:'+value.color;
+	
+	$el.css({background:value.bg,color:value.color}).html(sHtml);
+});
+var demo = new Vue({
+  el: '#main',
+  data: {
+    bg: 'green',
+	color:'yellow'
+  },
+  methods: {
+	click: function(){
+		this.bg = 'red';
+		this.color = 'white';
+	}
+  }
+});
+
+</script>
+</body>
+</html>

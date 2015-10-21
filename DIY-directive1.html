@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+.drag {width:300px;height:300px;left:0px;top:0px;background:red;position:absolute;}
+</style>
+</head>
+<body>
+<div id="main">
+	<input type="button" v-on="click: bBtn = !bBtn" value="点击" />
+	<div id="demo" v-drag="bBtn : bBtn"></div>
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+
+Vue.directive('drag', {
+  bind: function () {
+	  var $el = $(this.el);
+	$el.on({
+		'click': function(){
+			$el.css({
+				background:'green',
+				color:'#fff'
+			});
+		}
+	});
+  },
+  update: function (value) {
+	var $el = $(this.el);
+	if(value){
+		$el.css({
+			background:'yellow',
+			color:'red'
+		});
+	}else{
+		$el.css({
+			background:'red',
+			color:'yellow'
+		});
+	}
+    var sHtml =
+      'name - '       + this.name + '<br>' +
+      'raw - '        + this.raw + '<br>' +
+      'expression - ' + this.expression + '<br>' +
+      'argument - '   + this.arg + '<br>' +
+      'value - '      + value;
+	$el.html(sHtml);
+  },
+  unbind: function () {
+	//事件清理
+    $(this.el).off();
+  }
+});
+
+var demo = new Vue({
+  el: '#main',
+  data: {
+    bBtn: true
+  }
+});
+
+</script>
+</body>
+</html>

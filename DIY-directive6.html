@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+</head>
+<body>
+<div id="main">
+	<input type="button" v-on="click: click" value="改变数据" />
+	<div v-demo="json"></div>
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+Vue.directive('demo', {
+	deep: true, //深度数据观察
+	update: function (json) {
+		$(this.el).html('a:'+json.a+'<br />b:'+json.b);
+	}
+});
+
+var demo = new Vue({
+  el: '#main',
+  data: {
+    json: {
+		a:40,
+		b:30
+	}
+  },
+  methods: {
+	click: function(){
+		this.json.a++;
+		this.json.b--;
+	}
+  }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+</head>
+<body>
+<div id="main">
+	<input v-model="userInput">
+	<span>{{msg | concat userInput}}</span>
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+Vue.filter('concat', function (value, input) {
+  return value + input;
+})
+var demo = new Vue({
+  el: '#main',
+  data: {
+	msg:289274675,
+	userInput:'aaa'
+  }
+});
+
+</script>
+</body>
+</html>

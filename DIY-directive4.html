@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+.demo {width:300px;height:300px;left:0px;top:0px;}
+</style>
+</head>
+<body>
+<div id="main">
+	<input type="text" v-demo='msg' value="{{msg}}" />
+	{{msg}}
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script>
+Vue.directive('demo', {
+  twoWay: true,
+  bind: function () {
+	  var _s = this;
+	  $(this.el).on('input', function(){
+		 _s.set(_s.el.value);
+	  });
+  },
+  unbind: function () {
+    $(this.el).on();
+  }
+})
+
+var demo = new Vue({
+  el: '#main',
+  data: {
+    msg: 'vue'
+  }
+});
+
+</script>
+</body>
+</html>
