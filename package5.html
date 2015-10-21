@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+a {margin:0 15px;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<a v-repeat="page in pages" v-on="click: click($index)" href="javascript:;">{{page}}</a>
+<!--  keep-alive 避免重新渲染 -->
+<component is="{{currentView}}" keep-alive>
+  <!-- 内容随 vm.currentview 一同改变！ -->
+</component>
+<script>
+new Vue({
+  el: 'body',
+  data: {
+    currentView: 'home',
+    pages: ['home','posts','archive']
+  },
+  components: {
+    home: {
+		template: '<div>111</div>'
+	},
+    posts: {
+		template: '<div>22</div>'
+	},
+    archive: {
+		template: '<div>333</div>'
+	}
+  },
+  methods: {
+	click: function(q){
+		this.currentView = this.pages[q];
+	}
+  }
+})
+</script>
+</body>
+</html>

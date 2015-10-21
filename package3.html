@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<div id="main">
+	<!-- 父级模板 -->
+	<input type="text" v-model="msg" />
+	<my-lee lee-msg="{{msg}}"></my-lee>
+</div>
+<script>
+Vue.component('my-lee', {
+	// 模板
+    template: '<div>{{leeMsg}} {{privateMsg}}</div><child on-load="{{onChildLoaded}}"></child>',
+    // 接受参数 驼峰命名_vs-_连字符命名
+	props: ['leeMsg'],
+    //props: {
+        //msg: String
+    //},
+    // 私有数据，需要在函数中返回以避免多个实例共享一个对象
+    data: function () {
+        return {
+            privateMsg: 'VUE!'
+        }
+    },
+	methods: {
+		onChildLoaded: function (msg) {
+			alert(msg)
+		}
+	}
+});
+
+//子组件
+Vue.component('child', {
+	props: ['onLoad'],
+	// 模板
+	template: '<div>aaa</div>',
+	ready: function () {
+		this.onLoad('message from child!')
+	}
+})
+
+var vm = new Vue({
+  el: '#main',
+  data: {
+	msg: 'hello'
+  }
+});
+
+</script>
+</body>
+</html>

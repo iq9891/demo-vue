@@ -15,6 +15,7 @@
 <body id="body">
 <div id="main" class="main">
 	<input v-on="click: btn = !btn,touchend:tapFn" type="button" value="点击" />
+	<input v-on="click: showNum(2)" type="button" id="inp" value="点击显示参数" />
 	<p v-on="white: btn,red: btn,yellow: !btn" v-text='name'></p>
 	<p v-class="green: !btn,yellow: btn" v-text='age'></p>
 	<p v-class="red: !btn,white: !btn" v-text='sex'></p>
@@ -33,6 +34,9 @@ var vm = new Vue({
 	methods:{
 		tapFn: function(){
 			alert(this.name);
+		},
+		showNum: function(num){
+			alert(num);
 		}
 	}
 });

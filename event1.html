@@ -12,25 +12,29 @@
 <div id="main">
 	<p>我的名字是{{name}}</p>
 	<p>我今年{{age}}</p>
-	<param-demo size="{{name}}" my-message="{{age}}"></param-demo>
 </div>
-
 <script>
-Vue.component('param-demo', {
-  props: ['size', 'myMessage'], // 数组写法
-  compiled: function () {
-    console.log(this.size);
-    console.log(this.myMessage);
-  }
-});
+var oData = {
+    name:'lee',
+	age: 18
+  };
+
 var vm = new Vue({
   el: '#main',
-  data: {
-    name:'lee',
-	age: 18,
-	sex: '男'
+  data: oData,
+  methods: {
+	add: function () {
+      this.name = 'ma';
+      this.age++;
+    }
   }
 });
+
+setTimeout(vm.add, 2000)
+//vm.name = 'ma';
+//vm.age = 456;
+//vm.$data.name = 'aoao';
+//vm.$data.age = 951;
 </script>
 </body>
 </html>

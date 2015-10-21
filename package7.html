@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<div id="main">
+	<!-- 父级模板 -->
+	<my-lee>
+		<p>替换了!</p>
+	</my-lee>
+	<br />
+	<!-- 父级模板 -->
+	<my-more>
+		<p>替换了1</p>
+		<p>替换了2</p>
+		<p>替换了3</p>
+	</my-more>
+	<br />
+	<!-- 父级模板 -->
+	<my-demo inline-template>
+		<p>这里的内容会作为组件本身的模板进行编译</p>
+		<p>而不是作为父作用域的插入内容</p>
+	</my-demo>
+</div>
+<script>
+//单点插入
+Vue.component('my-lee', {
+  template: '<h4>VUE!</h4><content>这里将被替换</content>'
+})
+var sHtml = '<h4>VUE!</h4>'+
+'<content select="p:nth-child(3)"></content>'+
+'<content select="p:nth-child(2)"></content>'+
+'<content select="p:nth-child(1)"></content>';
+//多点插入
+Vue.component('my-more', {
+  template:sHtml 
+})
+//行内模板
+Vue.component('my-demo', {
+  template:'<h4>VUE!</h4>' 
+})
+
+var vm = new Vue({
+  el: '#main'
+});
+
+</script>
+</body>
+</html>
