@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<form id="demo" class="demo">
+	<input type="button" v-on="click: click" value="换数据" />
+	<select v-model="selected" options="options"></select>
+</form>
+<script>
+new Vue({
+  el: '#demo',
+  data: {
+    options: ['a', 'b', 'c']
+  },
+  methods: {
+	click: function(){
+		this.options = [
+		  { text: 'lee', value: '李四' },
+		  { text: 'wang', value: '王二' }
+		]
+	}
+  }
+})
+</script>
+</body>
+</html>

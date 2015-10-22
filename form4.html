@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<form id="demo">
+  <!-- text -->
+  <p>
+    <input v-model="msg" debounce="500">
+    {{msg}}
+  </p>
+</form>
+<script>
+new Vue({
+  el: '#demo',
+  data: {
+    msg      : '11'
+  }
+})
+</script>
+</body>
+</html>

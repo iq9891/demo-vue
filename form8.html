@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+
+<form id="demo" class="demo">
+	<select v-model="selectedUser" options="users">
+		<option value="0">请选择</option>
+	</select>
+	{{selectedUser}}
+</form>
+<script>
+
+new Vue({
+  el: '#demo',
+  data: {
+	selectedUser: '0',//如果是空，默认不选中
+    users: ['a', 'b', 'c']
+  }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<form id="demo" class="demo">
+	<select
+		v-model="selectedUser"
+		options="users | extract 'name'">
+	</select>
+</form>
+<script>
+Vue.filter('extract', function (value, keyToExtract) {
+  return value.map(function (item) {
+    return item[keyToExtract]
+  })
+})
+new Vue({
+  el: '#demo',
+  data: {
+    users: [{ name: 'Bruce' }, { name: 'Chuck' }]
+  }
+})
+</script>
+</body>
+</html>

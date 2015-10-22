@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+ul {
+    padding-left: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.staggered-transition {
+    transition: all .5s ease;
+    overflow: hidden;
+    margin: 0;
+    height: 60px;
+}
+.staggered-enter, .staggered-leave {
+    opacity: 0;
+    height: 0;
+}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+</head>
+<body>
+<div id="main">
+	<input v-model="query">
+    <ul>
+        <li v-repeat="list | filterBy query" v-transition="staggered" stagger="100">{{msg}}</li>
+    </ul>
+</div>
+<script>
+Vue.transition('stagger', {
+  stagger: function (index) {
+    // 为每个过渡元素增加 50ms 的延迟,
+    // 但是最大延迟为 300ms
+    return Math.min(300, index * 50)
+  }
+})
+new Vue({
+    el: '#main',
+    data: {
+        query: '',
+        list: [
+            { msg: '3' },
+            { msg: '12' },
+            { msg: '13' },
+            { msg: '124' },
+            { msg: '2345' }
+        ]
+    }
+})
+</script>
+</body>
+</html>

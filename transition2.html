@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+.expand-transition {
+  transition: all .3s ease;
+  height: 60px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<div id="main">
+	<input type="button" v-on="click:show=!show" value="点击" />
+	<!-- v-transition 没有值默认是v -->
+	<div v-if="show" v-transition="expand">hello</div>
+</div>
+<script>
+var oData = {
+    show: false
+  };
+
+var vm = new Vue({
+  el: '#main',
+  data:oData
+});
+Vue.transition('expand', {
+  beforeEnter: function (el) {
+    el.textContent = 'beforeEnter';
+	console.log('beforeEnter');
+  },
+  enter: function (el) {
+    el.textContent = 'enter';
+	console.log('enter');
+  },
+  afterEnter: function (el) {
+    el.textContent = 'afterEnter';
+	console.log('afterEnter');
+  },
+  enterCancelled: function (el) {
+    // handle cancellation
+	console.log('enterCancelled');
+  },
+
+  beforeLeave: function (el) {
+    el.textContent = 'beforeLeave';
+	console.log('beforeLeave');
+  },
+  leave: function (el) {
+    el.textContent = 'leave';
+	console.log('leave');
+  },
+  afterLeave: function (el) {
+    el.textContent = 'afterLeave';
+	console.log('afterLeave');
+  },
+  leaveCancelled: function (el) {
+    // handle cancellation
+	console.log('leaveCancelled');
+  }
+})
+</script>
+</body>
+</html>

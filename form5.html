@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>vue.js</title>
+<style type="text/css">
+* {font-size:50px;margin:0;padding:0;}
+input {width:100px;height:100px;}
+</style>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+</head>
+<body>
+<form id="demo" class="demo">
+	<!-- toggle 是 true 或 false -->
+	<input type="checkbox" v-model="toggle">{{toggle}}
+	<br />
+	<!-- 当单选框被选中时 pick 是 "red" -->
+	<input type="radio" v-model="pick" value="red">
+	<input type="radio" v-model="pick" value="green">{{pick}}
+	<br />
+	<!-- 绑定其他值 -->
+	<input type="checkbox" v-model="toggle2" true-exp="a" false-exp="b">{{toggle2}}
+	<br />
+	<input type="radio" v-model="pick2" exp="a">
+	<input type="radio" v-model="pick2" exp="b">{{pick2}}
+</form>
+<script>
+new Vue({
+  el: '#demo',
+  data: {
+    toggle: true,
+    toggle2: 'VUE',
+	a:'hello',
+	b:'VUE',
+    pick: 'red',
+    pick2: 'VUE'
+  }
+})
+</script>
+</body>
+</html>
