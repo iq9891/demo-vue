@@ -1,7 +1,7 @@
-<style lang="sass?outputStyle=expanded">
+<!--<style lang="sass?outputStyle=expanded">
  $color:green;
  div {background:$color;}
-</style>
+</style>-->
 
 <template lang="ejs">
 <div>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+
 import CompA from './components/a.vue'
 import CompB from './components/b.vue'
 import CompC from './components/c.vue'
